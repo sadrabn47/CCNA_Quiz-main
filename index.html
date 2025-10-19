@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCNA Exam Quiz</title>
+    <style>
+        /*
+        This is a compiled and minified version of Tailwind CSS v3.4.1 and custom styles.
+        It includes all necessary utility classes to make the design work offline.
+        */
+        *,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}
+        :after,:before{--tw-content:""}
+        html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}
+        body{margin:0;line-height:inherit}
+        h1,h2,p{margin:0}
+        button{background-color:transparent;background-image:none;padding:0;line-height:inherit;color:inherit}
+        button:focus:not(:focus-visible){outline:0}
+        button,[type=button]{-webkit-appearance:button;text-transform:none}
+        svg{display:block;vertical-align:middle}
+        *,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }
+        .dark{--tw-border-color-opacity:1;border-color:rgba(55,65,81,var(--tw-border-color-opacity))}
+        .container{width:100%}
+        @media (min-width:640px){.container{max-width:640px}}
+        @media (min-width:768px){.container{max-width:768px}}
+        @media (min-width:1024px){.container{max-width:1024px}}
+        @media (min-width:1280px){.container{max-width:1280px}}
+        @media (min-width:1536px){.container{max-width:1536px}}
+        .hidden{display:none}
+        .h-2\.5{height:.625rem}
+        .h-6{height:1.5rem}
+        .w-6{width:1.5rem}
+        .w-full{width:100%}
+        .flex-col{flex-direction:column}
+        .items-center{align-items:center}
+        .justify-center{justify-content:center}
+        .justify-between{justify-content:space-between}
+        .gap-4{gap:1rem}
+        .space-y-6>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}
+        .rounded-full{border-radius:9999px}
+        .rounded-lg{border-radius:.5rem}
+        .rounded-xl{border-radius:.75rem}
+        .bg-white{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}
+        .bg-gray-200{--tw-bg-opacity:1;background-color:rgba(229,231,235,var(--tw-bg-opacity))}
+        .bg-gray-500{--tw-bg-opacity:1;background-color:rgba(107,114,128,var(--tw-bg-opacity))}
+        .bg-gray-500:hover{--tw-bg-opacity:1;background-color:rgba(75,85,99,var(--tw-bg-opacity))}
+        .bg-cyan-600{--tw-bg-opacity:1;background-color:rgba(8,145,178,var(--tw-bg-opacity))}
+        .bg-cyan-600:hover{--tw-bg-opacity:1;background-color:rgba(14,116,144,var(--tw-bg-opacity))}
+        .bg-blue-500{--tw-bg-opacity:1;background-color:rgba(59,130,246,var(--tw-bg-opacity))}
+        .bg-blue-500:hover{--tw-bg-opacity:1;background-color:rgba(37,99,235,var(--tw-bg-opacity))}
+        .bg-green-500{--tw-bg-opacity:1;background-color:rgba(34,197,94,var(--tw-bg-opacity))}
+        .bg-green-500:hover{--tw-bg-opacity:1;background-color:rgba(22,163,74,var(--tw-bg-opacity))}
+        .bg-red-100{--tw-bg-opacity:1;background-color:rgba(254,226,226,var(--tw-bg-opacity))}
+        .bg-red-500{--tw-bg-opacity:1;background-color:rgba(239,68,68,var(--tw-bg-opacity))}
+        .bg-red-500:hover{--tw-bg-opacity:1;background-color:rgba(220,38,38,var(--tw-bg-opacity))}
+        .hover\:bg-gray-200:hover{--tw-bg-opacity:1;background-color:rgba(229,231,235,var(--tw-bg-opacity))}
+        .p-2{padding:.5rem}
+        .p-4{padding:1rem;margin: 5px;}
+        .p-6{padding:1.5rem}
+        .p-8{padding:2rem}
+        .px-4{padding-left:1rem;padding-right:1rem}
+        .py-3{padding-top:.75rem;padding-bottom:.75rem}
+        .px-6{padding-left:1.5rem;padding-right:1.5rem}
+        .px-8{padding-left:2rem;padding-right:2rem}
+        .py-3{padding-top:.75rem;padding-bottom:.75rem}
+        .text-center{text-align:center}
+        .font-sans{font-family:Inter,sans-serif}
+        .text-sm{font-size:.875rem;line-height:1.25rem}
+        .text-lg{font-size:1.125rem;line-height:1.75rem}
+        .text-xl{font-size:1.25rem;line-height:1.75rem}
+        .text-2xl{font-size:1.5rem;line-height:2rem}
+        .text-3xl{font-size:1.875rem;line-height:2.25rem}
+        .font-bold{font-weight:700}
+        .font-medium{font-weight:500}
+        .font-semibold{font-weight:600}
+        .text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}
+        .text-gray-500{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}
+        .text-gray-800{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}
+        .text-red-500{--tw-text-opacity:1;color:rgba(239,68,68,var(--tw-text-opacity))}
+        .text-red-700{--tw-text-opacity:1;color:rgba(185,28,28,var(--tw-text-opacity))}
+        .text-cyan-600{--tw-text-opacity:1;color:rgba(8,145,178,var(--tw-text-opacity))}
+        .shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
+        .shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
+        .transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}
+        .duration-300{transition-duration:.3s}
+        .question-fade-in{animation:fadeIn .5s ease-in-out}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        .choice-btn{transition:background-color .2s ease-in-out,border-color .2s ease-in-out,color .2s ease-in-out;text-align:left;display:flex;align-items:center;padding:1rem;border-width:2px;border-radius:.5rem}
+        .choice-btn.correct{background-color:#d1fae5;border-color:#10b981;color:#047857}
+        .dark .choice-btn.correct{background-color:#064e3b;border-color:#34d399;color:#d1fae5}
+        .choice-btn.incorrect{background-color:#fee2e2;border-color:#ef4444;color:#b91c1c}
+        .dark .choice-btn.incorrect{background-color:#7f1d1d;border-color:#f87171;color:#fee2e2}
+        .choice-btn.selected{border-color:#2563eb;background-color:#dbeafe}
+        .dark .choice-btn.selected{border-color:#60a5fa;background-color:#1e3a8a}
+        .choice-btn .icon{margin-right:.75rem;flex-shrink:0;width:1.5rem;height:1.5rem}
+        body{background-color:#f9fafb;color:#1f2937;font-family:Inter,sans-serif;transition:color .3s,background-color .3s;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+        .dark body{background-color:#111827;color:#f3f4f6}
+        .dark{color-scheme:dark}
+        .container{margin-left:auto;margin-right:auto;padding:1rem}
+        @media (min-width:768px){.container{padding:2rem}}
+        @media (min-width:1024px){.container{max-width:56rem}}
+        .flex{display:flex}
+        .grid{display:grid}
+        .relative{position:relative}
+        .mt-4{margin-top:1rem}
+        .mt-8{margin-top:2rem}
+        .mb-2{margin-bottom:.5rem}
+        .mb-4{margin-bottom:1rem}
+        .mb-6{margin-bottom:1.5rem}
+        .mb-8{margin-bottom:2rem}
+        .w-full{width:100%}
+        .transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
+        .grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+        .border-gray-300{--tw-border-opacity:1;border-color:rgba(209,213,219,var(--tw-border-opacity))}
+        .border-red-400{--tw-border-opacity:1;border-color:rgba(248,113,113,var(--tw-border-opacity))}
+        .bg-gray-50{--tw-bg-opacity:1;background-color:rgba(249,250,251,var(--tw-bg-opacity))}
+        .hover\:bg-gray-100:hover{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}
+        .hover\:bg-gray-600:hover{--tw-bg-opacity:1;background-color:rgba(75,85,99,var(--tw-bg-opacity))}
+        .hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
+        .fill-none{fill:none}
+        .stroke-currentColor{stroke:currentColor}
+        .text-gray-200{--tw-text-opacity:1;color:rgba(229,231,235,var(--tw-text-opacity))}
+        .text-gray-400{--tw-text-opacity:1;color:rgba(156,163,175,var(--tw-text-opacity))}
+        .text-red-200{--tw-text-opacity:1;color:rgba(254,202,202,var(--tw-text-opacity))}
+        .text-red-400{--tw-text-opacity:1;color:rgba(248,113,113,var(--tw-text-opacity))}
+        .text-cyan-400{--tw-text-opacity:1;color:rgba(34,211,238,var(--tw-text-opacity))}
+        .line-through{text-decoration-line:line-through}
+        .transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}
+        .list-disc{list-style-type:disc}
+        .list-inside{list-style-position:inside}
+        .focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}
+        .focus\:ring-4:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}
+        .focus\:ring-cyan-300:focus{--tw-ring-color:rgba(103,232,249,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        .focus\:ring-green-300:focus{--tw-ring-color:rgba(110,231,183,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        .focus\:ring-blue-300:focus{--tw-ring-color:rgba(147,197,253,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        .focus\:ring-red-300:focus{--tw-ring-color:rgba(252,165,165,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        .focus\:ring-gray-300:focus{--tw-ring-color:rgba(209,213,219,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        .disabled\:cursor-not-allowed:disabled{cursor:not-allowed}
+        .disabled\:bg-gray-400:disabled{--tw-bg-opacity:1;background-color:rgba(156,163,175,var(--tw-bg-opacity))}
+        .dark .dark\:bg-gray-900{--tw-bg-opacity:1;background-color:rgba(17,24,39,var(--tw-bg-opacity))}
+        .dark .dark\:bg-gray-800{--tw-bg-opacity:1;background-color:rgba(31,41,55,var(--tw-bg-opacity))}
+        .dark .dark\:bg-gray-700{--tw-bg-opacity:1;background-color:rgba(55,65,81,var(--tw-bg-opacity))}
+        .dark .dark\:bg-red-900{--tw-bg-opacity:1;background-color:rgba(127,29,29,var(--tw-bg-opacity))}
+        .dark .dark\:border-gray-600{--tw-border-opacity:1;border-color:rgba(75,85,99,var(--tw-border-opacity))}
+        .dark .dark\:border-red-600{--tw-border-opacity:1;border-color:rgba(220,38,38,var(--tw-border-opacity))}
+        .dark .hover\:dark\:bg-gray-700:hover{--tw-bg-opacity:1;background-color:rgba(55,65,81,var(--tw-bg-opacity))}
+        .dark .dark\:text-gray-200{--tw-text-opacity:1;color:rgba(229,231,235,var(--tw-text-opacity))}
+        .dark .dark\:text-gray-400{--tw-text-opacity:1;color:rgba(156,163,175,var(--tw-text-opacity))}
+        .dark .dark\:text-red-400{--tw-text-opacity:1;color:rgba(248,113,113,var(--tw-text-opacity))}
+        .dark .dark\:text-cyan-400{--tw-text-opacity:1;color:rgba(34,211,238,var(--tw-text-opacity))}
+        .dark .dark\:disabled\:bg-gray-600:disabled{--tw-bg-opacity:1;background-color:rgba(75,85,99,var(--tw-bg-opacity))}
+        .dark .dark\:focus\:ring-cyan-800:focus{--tw-ring-color:rgba(21,94,117,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        .dark .dark\:focus\:ring-green-800:focus{--tw-ring-color:rgba(22,101,52,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        .dark .dark\:focus\:ring-blue-800:focus{--tw-ring-color:rgba(30,64,175,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        .dark .dark\:focus\:ring-red-800:focus{--tw-ring-color:rgba(153,27,27,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        .dark .dark\:focus\:ring-gray-700:focus{--tw-ring-color:rgba(55,65,81,var(--tw-ring-opacity));--tw-ring-opacity:1}
+        @media (min-width:768px){.md\:w-auto{width:auto}
+        .md\:flex-row{flex-direction:row}
+        .md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+        .md\:p-8{padding:2rem}
+        .md\:text-2xl{font-size:1.5rem;line-height:2rem}
+        .md\:text-3xl{font-size:1.875rem;line-height:2.25rem}}
+    </style>
+    <script>
+        // Set theme from localStorage on initial load
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
+
+    <div id="app" class="container mx-auto p-4 md:p-8 max-w-4xl">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl md:text-3xl font-bold text-cyan-600 dark:text-cyan-400">Knowledge Quest</h1>
+            <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2 rounded-full hover:bg-gray-200 dark:hover:dark:bg-gray-700 transition-colors">
+                <svg id="theme-icon-light" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg id="theme-icon-dark" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+        </header>
+
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="text-center p-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold mb-4">Welcome to the CCNA Quiz!</h2>
+            <p class="mb-6">Test your knowledge with multiple-choice questions. You'll have 45 minutes to complete the quiz.</p>
+            <p class="mb-8 text-sm text-gray-500 dark:text-gray-400">Select your language to begin.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button id="start-en-btn" class="bg-cyan-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-cyan-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800">
+                    Start English Quiz (CCNA)
+                </button>
+                <button id="start-fa-btn" class="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">
+                    شروع آزمون فارسی (CCNA)
+                </button>
+            </div>
+
+            <button id="continue-quiz-btn" class="hidden mt-4 w-full md:w-auto bg-gray-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-700">Continue Previous Quiz</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden">
+            <!-- Quiz Header -->
+            <div class="flex justify-between items-center mb-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+                <div id="progress-container" class="text-sm font-medium" aria-live="polite">Question <span id="current-question-number"></span> of <span id="total-questions"></span></div>
+                <div id="timer-container" class="text-lg font-bold text-red-500 dark:text-red-400" aria-live="assertive">
+                    <span id="timer">45:00</span>
+                </div>
+            </div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-6">
+                <div id="progress-bar" class="bg-cyan-600 h-2.5 rounded-full" style="width: 0%; transition: width 0.3s ease-in-out;"></div>
+            </div>
+
+            <!-- Question Area -->
+            <div id="question-container" class="p-6 md:p-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg question-fade-in">
+                <p id="question-text" class="text-xl md:text-2xl font-semibold mb-2"></p>
+                <p id="question-hint" class="text-sm text-gray-500 dark:text-gray-400 mb-6"></p>
+                <div id="choices-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Choices will be injected by JS -->
+                </div>
+                <div id="explanation-container" class="hidden mt-6 p-4 rounded-lg bg-gray-100 dark:bg-gray-700">
+                    <h3 class="font-bold text-lg mb-2 text-cyan-600 dark:text-cyan-400">Explanation</h3>
+                    <p id="explanation-text" class="text-gray-700 dark:text-gray-300"></p>
+                </div>
+                <div class="mt-8 text-center">
+                    <button id="submit-answer-btn" class="w-full md:w-auto bg-cyan-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-cyan-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed" disabled>Submit Answer</button>
+                    <button id="next-question-btn" class="hidden w-full md:w-auto bg-green-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="hidden text-center p-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">Quiz Complete!</h2>
+            <p id="score-text" class="text-xl mb-6">You scored 0/0 (0 out of 0 correct)</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button id="review-answers-btn" class="bg-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800">Review Answers</button>
+                <button id="restart-quiz-btn" class="bg-red-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-600 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800">Restart Quiz</button>
+            </div>
+        </div>
+
+        <!-- Review Section -->
+        <div id="review-section" class="hidden mt-8">
+            <h3 class="text-2xl font-bold mb-6 text-center">Review Your Answers</h3>
+            <div id="review-container" class="space-y-6">
+                <!-- Review content will be injected by JS -->
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-container" class="hidden mt-8 p-4 bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-200 px-4 py-3 rounded-lg relative" role="alert">
+            <strong class="font-bold">Error:</strong>
+            <span id="error-message" class="block sm:inline">Something went wrong.</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

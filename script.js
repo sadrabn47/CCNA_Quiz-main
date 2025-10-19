@@ -32,14 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- State Variables ---
     let questions = [];
     let currentQuestionIndex = 0;
-    let score = 0;
+    let score = 0; // This will now count the number of correct answers
     let selectedAnswers = [];
     let timerInterval;
-    let timeLeft = 2700; // 45 minutes in seconds
-    let userAnswers = []; // Store user's answers for review
+    let timeLeft = 2700;
+    let userAnswers = [];
+    let currentLang = 'en'; // NEW: To track the current language
 
     // --- Constants ---
     const QUIZ_STATE_KEY = 'quizState';
+    const QUIZ_LANG_KEY = 'quizLang'; // NEW: To save the language state
 
     // --- Functions ---
 
@@ -79,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             score,
             timeLeft,
             userAnswers,
+            lang: currentLang // NEW: Save language in state
         };
         localStorage.setItem(QUIZ_STATE_KEY, JSON.stringify(state));
     };
@@ -97,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Quiz Logic
     const startQuiz = async (lang, isContinuation = false) => {
+        currentLang = lang; // CHANGED: Set current language
         startEnBtn.disabled = true;
         startFaBtn.disabled = true;
 
@@ -126,6 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
             reviewSection.classList.add('hidden');
             quizScreen.classList.remove('hidden');
             
+            // Apply language-specific text
+            updateUIText(lang);
+            
             loadQuestion();
             startTimer();
 
@@ -135,6 +142,30 @@ document.addEventListener('DOMContentLoaded', () => {
         } finally {
             startEnBtn.disabled = false;
             startFaBtn.disabled = false;
+        }
+    };
+
+    // NEW FUNCTION: To handle UI text changes based on language
+    const updateUIText = (lang) => {
+        if (lang === 'fa') {
+            document.getElementById('progress-container').childNodes[0].nodeValue = "سوال ";
+            questionHint.textContent = "یک یا چند گزینه را انتخاب کرده و دکمه ثبت را بزنید.";
+            submitAnswerBtn.textContent = "ثبت پاسخ";
+            nextQuestionBtn.textContent = "سوال بعدی";
+            reviewAnswersBtn.textContent = "مرور پاسخ‌ها";
+            restartQuizBtn.textContent = "شروع مجدد آزمون";
+            document.querySelector('#review-section h3').textContent = "مرور پاسخ‌های شما";
+            document.querySelector('#explanation-container h3').textContent = "توضیحات";
+        } else {
+            // Default to English
+            document.getElementById('progress-container').childNodes[0].nodeValue = "Question ";
+            questionHint.textContent = "Select one or more options and click submit.";
+            submitAnswerBtn.textContent = "Submit Answer";
+            nextQuestionBtn.textContent = "Next Question";
+            reviewAnswersBtn.textContent = "Review Answers";
+            restartQuizBtn.textContent = "Restart Quiz";
+            document.querySelector('#review-section h3').textContent = "Review Your Answers";
+            document.querySelector('#explanation-container h3').textContent = "Explanation";
         }
     };
     
@@ -170,10 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
         questionContainer.classList.add('question-fade-in');
 
         const question = questions[currentQuestionIndex];
-        questionText.textContent = question.question;
-        questionHint.textContent = "Select one or more options and click submit.";
-
-        question.choices.forEach((choice, index) => {
+        // Use innerHTML to correctly render HTML tags like <pre> in the question
+        questionText.innerHTML = question.question; 
+        
+        // Handle right-to-left for Persian questions
+        questionText.style.textAlign = currentLang === 'fa' ? 'right' : 'left';
+        
+        question.choices.forEach((choice) => {
             const button = document.createElement('button');
             button.innerHTML = `
                 <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -182,6 +216,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span>${choice}</span>
             `;
             button.className = 'choice-btn bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600';
+            // Handle right-to-left for Persian choices
+            button.style.textAlign = currentLang === 'fa' ? 'right' : 'left';
+            
             button.dataset.choice = choice;
             button.setAttribute('aria-pressed', 'false');
             button.addEventListener('click', () => handleChoiceSelection(button, choice));
@@ -233,11 +270,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         if (currentQuestionIndex === questions.length - 1) {
-            nextQuestionBtn.textContent = 'Finish Quiz';
+            nextQuestionBtn.textContent = currentLang === 'fa' ? 'پایان آزمون' : 'Finish Quiz';
         }
         
         saveState();
-        explanationText.textContent = question.explanation;
+        explanationText.innerHTML = question.explanation;
         explanationContainer.classList.remove('hidden');
     };
 
@@ -251,13 +288,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // --- CHANGED: finishQuiz function with percentage scoring ---
     const finishQuiz = () => {
         clearInterval(timerInterval);
         quizScreen.classList.add('hidden');
         resultsScreen.classList.remove('hidden');
-        scoreText.textContent = `You scored ${score}/${questions.length} (${score} out of ${questions.length} correct)`;
+
+        const totalQuestions = questions.length;
+        // Calculate percentage, handle division by zero
+        const percentage = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
+
+        // Display score based on the current language
+        if (currentLang === 'fa') {
+            document.querySelector('#results-screen h2').textContent = "آزمون تمام شد!";
+            scoreText.textContent = `امتیاز شما: ${percentage}% (${score} پاسخ صحیح از ${totalQuestions})`;
+        } else {
+            document.querySelector('#results-screen h2').textContent = "Quiz Complete!";
+            scoreText.textContent = `Your Score: ${percentage}% (${score} out of ${totalQuestions} correct)`;
+        }
+
         clearState();
     };
+
 
     const updateProgress = () => {
         currentQuestionNumberEl.textContent = currentQuestionIndex + 1;
@@ -278,7 +330,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const isCorrect = JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect);
             const reviewBlock = document.createElement('div');
             reviewBlock.className = 'p-4 bg-white dark:bg-gray-800 rounded-lg shadow';
-            
+            reviewBlock.style.textAlign = currentLang === 'fa' ? 'right' : 'left';
+
             let choicesHtml = q.choices.map(choice => {
                 let choiceClass = 'text-gray-700 dark:text-gray-300';
                 if (q.answers.includes(choice)) {
@@ -289,21 +342,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 return `<li class="${choiceClass}">${choice}</li>`;
             }).join('');
+            
+            const yourAnswerText = currentLang === 'fa' ? 'پاسخ شما' : 'Your answer';
+            const correctAnswerText = currentLang === 'fa' ? 'پاسخ صحیح' : 'Correct answer';
+            const notAnsweredText = currentLang === 'fa' ? 'پاسخ داده نشده' : 'Not answered';
+            const explanationHeaderText = currentLang === 'fa' ? 'توضیحات:' : 'Explanation:';
 
             reviewBlock.innerHTML = `
                 <p class="font-bold mb-2">${index + 1}. ${q.question}</p>
                 <ul class="list-disc list-inside mb-2">${choicesHtml}</ul>
-                <p class="text-sm">Your answer: <span class="${isCorrect ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}">${userAnswer.join(', ') || 'Not answered'}</span></p>
-                <p class="text-sm">Correct answer: <span class="text-green-600 dark:text-green-400">${q.answers.join(', ')}</span></p>
+                <p class="text-sm">${yourAnswerText}: <span class="${isCorrect ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}">${userAnswer.join(', ') || notAnsweredText}</span></p>
+                <p class="text-sm">${correctAnswerText}: <span class="text-green-600 dark:text-green-400">${q.answers.join(', ')}</span></p>
                 <div class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-                    <p class="text-sm font-semibold">Explanation:</p>
+                    <p class="text-sm font-semibold">${explanationHeaderText}</p>
                     <p class="text-sm text-gray-600 dark:text-gray-400">${q.explanation}</p>
                 </div>`;
             reviewContainer.appendChild(reviewBlock);
         });
         
         const backButton = document.createElement('button');
-        backButton.textContent = 'Back to Start';
+        backButton.textContent = currentLang === 'fa' ? 'بازگشت به شروع' : 'Back to Start';
         backButton.className = 'mt-6 bg-cyan-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-cyan-700';
         backButton.onclick = () => {
             reviewSection.classList.add('hidden');
@@ -314,7 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const restartQuiz = () => {
-        if (confirm('Are you sure you want to restart? Your progress will be lost.')) {
+        const confirmMsg = currentLang === 'fa' ? 'آیا برای شروع مجدد مطمئن هستید؟ پیشرفت شما از بین خواهد رفت.' : 'Are you sure you want to restart? Your progress will be lost.';
+        if (confirm(confirmMsg)) {
             clearState();
             location.reload();
         }
@@ -322,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const handleKeyPress = (e) => {
         if (quizScreen.classList.contains('hidden')) {
-            // No default 'Enter' action on welcome screen anymore
+            // No default 'Enter' action
         } else {
             if (e.key >= '1' && e.key <= '4') {
                 const choiceIndex = parseInt(e.key) - 1;
@@ -346,15 +405,15 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.addEventListener('click', toggleTheme);
 
         const savedState = loadState();
-        if (savedState && savedState.userAnswers.length > 0) {
+        if (savedState && savedState.userAnswers && savedState.userAnswers.length > 0) {
             continueQuizBtn.classList.remove('hidden');
-            // Note: The 'lang' would need to be saved to properly continue,
-            // for now, it's a simple continuation that assumes the same questions.
-            // A more robust solution would save the lang in the state.
+            continueQuizBtn.textContent = savedState.lang === 'fa' ? 'ادامه آزمون قبلی' : 'Continue Previous Quiz';
             continueQuizBtn.addEventListener('click', () => {
-                // For simplicity, we assume English for continuation.
-                // TODO: Save language choice in localStorage to make this smarter.
-                startQuiz('en', true); 
+                currentQuestionIndex = savedState.currentQuestionIndex;
+                score = savedState.score;
+                timeLeft = savedState.timeLeft;
+                userAnswers = savedState.userAnswers;
+                startQuiz(savedState.lang, true);
             });
         }
 

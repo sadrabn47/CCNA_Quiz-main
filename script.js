@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0; // This will now count the number of correct answers
     let selectedAnswers = [];
     let timerInterval;
-    let timeLeft = 2700;
+    let timeLeft = 5400;
     let userAnswers = [];
     let currentLang = 'en'; // NEW: To track the current language
 
@@ -427,4 +427,5 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initializeApp();
+
 });

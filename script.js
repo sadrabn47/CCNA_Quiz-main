@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isContinuation) {
                 currentQuestionIndex = 0;
                 score = 0;
-                timeLeft = 2700;
+                timeLeft = 5400;
                 userAnswers = [];
                 clearState();
             }
@@ -429,3 +429,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
 
 });
+
